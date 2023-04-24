@@ -1,0 +1,62 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ 
+ */
+@import "bootstrap";
+$white: #FFFFFF;
+$usuasagi: #A2D7DD;
+body {
+  padding-top: 5rem;
+  color: $white;
+  background-image: url("BackGroundImage.jpg");
+  background-size:cover;
+}
+section {
+  overflow: auto;
+}
+textarea {
+  resize: vertical;
+}
+.top {
+  margin-bottom: 3rem;
+  h1 {
+    text-align: center;
+  }
+}
+/*
+.top {
+  margin-bottom: 3rem;
+}
+.top h1 {
+  text-align: center;
+}
+*/
+/* header */
+#logo {
+  float: left;
+  margin-right: 0.7rem;
+  font-size: 1.7rem;
+  color: $white;
+  text-transform: uppercase;
+  letter-spacing: -0.07rem;
+  padding-top: 0.6rem;
+  font-weight: bold;
+}
+#logo:hover {
+  color: $white;
+  text-decoration: none;
+}
+header a {
+  color: $white;
+  padding: 0.7rem 1rem;
+}
