@@ -10,53 +10,7 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- 
+
+ *= require_tree .
+
  */
-@import "bootstrap";
-$white: #FFFFFF;
-$usuasagi: #A2D7DD;
-body {
-  padding-top: 5rem;
-  color: $white;
-  background-image: url("BackGroundImage.jpg");
-  background-size:cover;
-}
-section {
-  overflow: auto;
-}
-textarea {
-  resize: vertical;
-}
-.top {
-  margin-bottom: 3rem;
-  h1 {
-    text-align: center;
-  }
-}
-/*
-.top {
-  margin-bottom: 3rem;
-}
-.top h1 {
-  text-align: center;
-}
-*/
-/* header */
-#logo {
-  float: left;
-  margin-right: 0.7rem;
-  font-size: 1.7rem;
-  color: $white;
-  text-transform: uppercase;
-  letter-spacing: -0.07rem;
-  padding-top: 0.6rem;
-  font-weight: bold;
-}
-#logo:hover {
-  color: $white;
-  text-decoration: none;
-}
-header a {
-  color: $white;
-  padding: 0.7rem 1rem;
-}

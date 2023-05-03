@@ -1,0 +1,60 @@
+@import "bootstrap";
+$white: #FFFFFF;
+$usuasagi: #A2D7DD;
+@mixin box_sizing {
+  -moz-box-sizing:    border-box;
+  -webkit-box-sizing:    border-box;
+  box-sizing:    border-box;
+}
+body {
+  /*padding-top: 5rem;*/
+  color: $white;
+  background-image: url("BackGroundImage.jpg");
+  background-size:cover;
+}
+section {
+  overflow: auto;
+}
+textarea {
+  resize: vertical;
+}
+
+.under-header {
+  padding-top: 5rem;
+}
+.top {
+  padding-top: 2rem;
+  margin-bottom: 3rem;
+  h1 {
+    text-align: center;
+  }
+}
+/* header */
+#logo {
+  float: left;
+  margin-right: 0.7rem;
+  font-size: 1.7rem;
+  color: $white;
+  text-transform: uppercase;
+  letter-spacing: -0.07rem;
+  padding-top: 0.6rem;
+  font-weight: bold;
+}
+#logo:hover {
+  color: $white;
+  text-decoration: none;
+}
+header a {
+  color: $white;
+  padding: 0.7rem 1rem;
+}
+/* forms */
+input, textarea, select, .uneditable-input {
+  border: 1px solid #bbb;
+  width: 100%;
+  margin-bottom: 15px;
+  @include box_sizing;
+}
+input {
+  height: auto !important;
+}
