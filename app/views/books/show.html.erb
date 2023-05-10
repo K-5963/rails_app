@@ -1,0 +1,8 @@
+<div class="top">
+  <p>本詳細ページ</p>
+  <%= render @book %>
+  <% if current_user == @book.user %>
+    <p><%= link_to "本情報を編集", edit_book_path %></p>
+    <p><%= link_to "削除", @book, method: :delete, data: { confirm: "削除していいですか？"} %></p>
+  <% end %>
+</div>
