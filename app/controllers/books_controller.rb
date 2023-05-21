@@ -1,5 +1,5 @@
 class BooksController < ApplicationController
-  before_action :logged_in_user, only: [:new, :create, :edit, :index, :update, :destroy]
+  before_action :logged_in_user, only: [:new, :create, :edit, :index, :show, :update, :destroy]
   before_action :correct_user, only: [:edit, :update, :destroy]
   include SessionsHelper
   
