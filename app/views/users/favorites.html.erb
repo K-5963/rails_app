@@ -1,8 +1,4 @@
 <div class="top">
   <p>いいねした本一覧ページ</p>
-  <% @books.each do |book| %>
-    <%= render book %>
-      <p><%= link_to "この本の詳細を見る", book %></p>
-      <br>
-  <% end %>
+  <%= render 'books/show' %>
 </div>

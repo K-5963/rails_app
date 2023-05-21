@@ -1,10 +1,6 @@
 <div class="top">
   <p>本一覧ページ</p>
   <p><%= link_to "本を登録する", new_book_path %></p>
-  <% @books.each do |book| %>
-    <%= render book %>
-      <p><%= link_to "この本の詳細を見る", book %></p>
-      <br>
-  <% end %>
+  <%= render 'books/show' %>
   <%= paginate @books %>
 </div>
