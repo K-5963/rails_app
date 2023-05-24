@@ -3,7 +3,3 @@
 <p>要点：<%= book.summary %></p>
 <p>感想：<%= book.impression %></p>
 <p>所有者：<%= book.user.name %></p>
-<% unless current_page?(book_path) %>
-  <p><%= link_to "この本の詳細を見る", book %></p>
-<% end %>
-<br>
