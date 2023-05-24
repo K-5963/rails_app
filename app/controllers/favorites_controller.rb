@@ -2,15 +2,24 @@ class FavoritesController < ApplicationController
   include SessionsHelper
   
   def create
-    Favorite.new(user_id: current_user.id, book_id: params[:id]).save
-    flash[:success] = 'いいねしました'
-    redirect_to book_path
+    if Favorite.find_by(user_id: current_user.id, book_id: params[:id])
+      flash[:danger] = 'すでにいいね済みです'
+      redirect_to book_path
+    else
+      Favorite.new(user_id: current_user.id, book_id: params[:id]).save
+      flash[:success] = 'いいねしました'
+      redirect_to book_path
+    end
   end
   
   def destroy
-    Favorite.find_by(user_id: current_user.id, book_id: params[:id]).destroy!
-    flash[:success] = 'いいね解除しました'
-    redirect_to favorited_books_path
+    if Favorite.find_by(user_id: current_user.id, book_id: params[:id]).destroy
+      flash[:success] = 'いいね解除しました'
+      redirect_to favorited_books_path
+    else
+      flash[:danger] = 'いいね解除に失敗しました'
+      redirect_to book_path
+    end
   end
   
 end
