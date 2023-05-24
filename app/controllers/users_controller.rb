@@ -46,7 +46,7 @@ class UsersController < ApplicationController
   end
   
   def favorites
-    @books = current_user.favorite_books
+    @books = User.find_by(id: params[:id]).favorite_books
   end
   
   private
