@@ -4,6 +4,6 @@
   <% if current_user == @user %>
     <p><%= link_to "ユーザー情報を編集", edit_user_path %></p>
   <% end %>
-  <p><%= link_to "いいねした本", favorited_books_path %></p>
+  <p><%= link_to "いいねした本", favorites_user_path %></p>
   <p><%= link_to "削除", @user, method: :delete, data: { confirm: "削除していいですか？"} %></p>
 </div>
