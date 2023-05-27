@@ -8,8 +8,6 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#destroy'
   root 'static_pages#hello'
   
-  post '/books/:id/favorites', to: 'favorites#create', as: 'create_favorite'
-  delete '/books/:id/favorites', to: 'favorites#destroy', as: 'destroy_favorite'
   
   resources :users do
     member do
@@ -17,6 +15,11 @@ Rails.application.routes.draw do
     end
   end
   
-  resources :books
+  resources :books do
+    member do
+      post :favorites, to: 'favorites#create'
+      delete :favorites, to: 'favorites#destroy', as: 'destroy_favorite'
+    end
+  end
   
 end

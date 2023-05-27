@@ -15,7 +15,7 @@ class FavoritesController < ApplicationController
   def destroy
     if Favorite.find_by(user_id: current_user.id, book_id: params[:id]).destroy!
       flash[:success] = 'いいね解除しました'
-      redirect_to favorites_user_path
+      redirect_to favorites_user_path(current_user)
     else
       flash[:danger] = 'いいね解除に失敗しました'
       redirect_to book_path
