@@ -5,4 +5,10 @@
     <p><%= link_to "本情報を編集", edit_book_path %></p>
     <p><%= link_to "削除", @book, method: :delete, data: { confirm: "削除していいですか？"} %></p>
   <% end %>
+  
+  <% if Favorite.find_by(user_id: current_user.id, book_id: @book.id) %>
+    <p><%= link_to "いいね解除", destroy_favorite_book_path(@book), method: :delete %></p>
+  <% else %>
+    <p><%= link_to "いいね", favorites_book_path(@book), method: :post %></p>
+  <% end %>
 </div>
