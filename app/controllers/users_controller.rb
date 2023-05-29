@@ -49,6 +49,15 @@ class UsersController < ApplicationController
     @books = User.find_by(id: params[:id]).favorite_books
   end
   
+  def following_users
+    @users = User.find_by(id: params[:id]).following_users
+  end
+  
+  def followers
+    @users = User.find_by(id: params[:id]).followers
+  end
+  
+  
   private
   
   def logged_in_user

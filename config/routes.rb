@@ -12,6 +12,10 @@ Rails.application.routes.draw do
   resources :users do
     member do
       get :favorites
+      get :following_users
+      get :followers
+      post :follow, to: 'relationships#create'
+      delete :unfollow, to: 'relationships#destroy'
     end
   end
   
