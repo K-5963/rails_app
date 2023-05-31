@@ -20,10 +20,7 @@ Rails.application.routes.draw do
   end
   
   resources :books do
-    member do
-      post :favorites, to: 'favorites#create'
-      delete :favorites, to: 'favorites#destroy', as: 'destroy_favorite'
-    end
+    resource :favorite, :only => [:create, :destroy]
   end
   
 end
