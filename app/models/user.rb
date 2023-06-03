@@ -13,12 +13,12 @@ class User < ApplicationRecord
     has_many :followers, through: :being_followed, source: :follower
     # => フォローされる人(followed) は中間テーブル(Relationshipのfollowed)を通じて(through)、 フォローする人(follower) と紐づく
     
-    def follow(user)
-      following.create!(followed_id: user)
+    def follow(user_id)
+      following.create!(followed_id: user_id)
     end
     
     def unfollow(user_id)
-      Relationship.find_by(followed_id: user_id).destroy!
+      following.find_by(followed_id: user_id).destroy!
     end
     
     validates :name, presence: true, length: { maximum: 50 }

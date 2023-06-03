@@ -8,21 +8,22 @@ class RelationshipsController < ApplicationController
       flash[:danger] = 'すでにフォロー済みです'
       redirect_to user_path
     else
-      current_user.follow(params[:user_id])
+      current_user.follow(params[:id])
       flash[:success] = 'フォローしました'
       redirect_to user_path
     end
   end
   
   def destroy
-  　if current_user.unfollow(user_id: params[:id])
+    if current_user.unfollow(params[:id])
       flash[:success] = 'フォロー解除しました'
       redirect_to user_path
-  　else
+    else
       flash[:danger] = 'フォロー解除に失敗しました'
       redirect_to user_path
-  　end
+    end
   end
+  
   
   private
   
@@ -40,6 +41,5 @@ class RelationshipsController < ApplicationController
       flash[:danger] = '自分をフォロー登録・解除することはできません'
       redirect_to user_path
     end
-  end  
-  
+  end
 end
