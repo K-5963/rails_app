@@ -4,7 +4,6 @@ class Book < ApplicationRecord
   has_many :favorite_users, through: :favorites, source: :user
   
   has_many :reviews
-  #has_many :comments, through: :reviews, source: :comment
     
   validates :name, presence: true
   validates :description, presence: true
