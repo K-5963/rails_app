@@ -2,16 +2,23 @@ class User < ApplicationRecord
     has_many :books
     has_many :favorites
     has_many :favorite_books, through: :favorites, source: :book
+    # source: :book => bookモデル？　book_idカラム？
+    
+    has_many :reviews
     
     # フォローする側（＝フォロワー）の目線
     has_many :following, class_name: "Relationship", foreign_key: "follower_id"
+    # class_name ： Relstionshipモデル
     has_many :following_users, through: :following, source: :followed
-    # => フォローする人(follower)は中間テーブル(Relationshipのfollower)を通じて(through)、フォローされる人(followed)と紐づく
+    # 「user.following_users」でフォローしているユーザー一覧（＝followingをthroughしたユーザーのみ）を取得できる
+    # source ： followed_idカラム
     
     # フォローされる側の目線
     has_many :being_followed, class_name: "Relationship", foreign_key: "followed_id"
+    # class_name ： Relstionshipモデル
     has_many :followers, through: :being_followed, source: :follower
-    # => フォローされる人(followed) は中間テーブル(Relationshipのfollowed)を通じて(through)、 フォローする人(follower) と紐づく
+    # 「user.followers」でフォロワー一覧（＝being_followedをthroughしたユーザーのみ）を取得できる
+    # source ： follower_idカラム
     
     def follow(user_id)
       following.create!(followed_id: user_id)

@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   
   resources :books do
     resource :favorite, :only => [:create, :destroy]
+    resource :review, :only => [:create, :destroy]
   end
   
 end
