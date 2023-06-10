@@ -22,14 +22,14 @@
   
   <p>レビュー一覧</p>
   <% if @book.reviews.present? %>
-    <% @book.reviews.each do |review| %>
-      <p>投稿者：<%= review.user.name %></p>
+  　<% @book.reviews.each do |review| %>
+    　<p>投稿者：<%= review.user.name %></p>
 　  　<p>コメント：<%= review.comment %></p>
 　  　<% if review.user == current_user %>
-　  　  <%= link_to "レビューを削除", book_review_path(@book), data: { confirm: "レビューを削除しますか？"}, method: :delete %>
+　    　<%= link_to "レビューを削除", book_review_path(@book), data: { confirm: "レビューを削除しますか？"}, method: :delete %>
 　  　  <br>
 　  　<% end %>
-　  <% end %>
+　　<% end %>
   <% else %>
     <p>まだレビューがありません</p>
   <% end %>
