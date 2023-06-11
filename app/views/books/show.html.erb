@@ -12,7 +12,7 @@
     <p><%= link_to "いいね", book_favorite_path(@book), method: :post %></p>
   <% end %>
   
-  <% unless Review.find_by(user_id: current_user.id, book_id: @book.id) %>
+  <% unless @book.reviewed?(user = current_user) %>
     <%= form_with url: book_review_path(@book), scope: :review, local: true do |f| %>
       <%= f.label :comment, "レビュー" %>
       <%= f.text_area :comment %>
