@@ -19,13 +19,18 @@ class ReviewsController < ApplicationController
   
   def destroy
     @book = Book.find_by(id: params[:book_id])
+    
+    unless Review.find_by(user_id: current_user.id, book_id: @book.id)
+      flash[:danger] = 'レビューがありません'
+      return render 'books/show'
+    end
+      
     if Review.find_by(user_id: current_user.id, book_id: @book.id).destroy
       flash[:success] = 'レビューを削除しました'
-      redirect_to book_path(@book)
     else
       flash[:danger] = 'レビュー削除に失敗しました'
-      redirect_to book_path(@book)
     end
+    redirect_to book_path(@book)
   end
   
   
