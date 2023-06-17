@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_06_03_005824) do
+ActiveRecord::Schema.define(version: 2023_06_12_104301) do
 
   create_table "books", force: :cascade do |t|
     t.string "name"
@@ -39,6 +39,7 @@ ActiveRecord::Schema.define(version: 2023_06_03_005824) do
     t.integer "user_id"
     t.integer "book_id"
     t.text "comment"
+    t.float "rate"
     t.index ["book_id"], name: "index_reviews_on_book_id"
     t.index ["user_id"], name: "index_reviews_on_user_id"
   end

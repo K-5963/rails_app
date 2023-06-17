@@ -5,7 +5,7 @@ class Book < ApplicationRecord
   
   has_many :reviews
   
-  def reviewed?(user)
+  def reviewed_by?(user)
     Review.find_by(user_id: user.id, book_id: self.id)
   end
     

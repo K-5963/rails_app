@@ -37,7 +37,7 @@ class ReviewsController < ApplicationController
   private
   
   def comment_params
-    params.require(:review).permit(:comment).merge(book_id: @book.id)
+    params.require(:review).permit(:comment, :rate).merge(book_id: @book.id)
   end
   
 end
