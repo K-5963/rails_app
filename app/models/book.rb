@@ -10,8 +10,7 @@ class Book < ApplicationRecord
   end
   
   def average_rate
-    book = Book.find_by(id: self.id)
-    book.reviews.average(:rate).round(1)
+    reviews.average(:rate).round(1)
   end
     
   validates :name, presence: true
