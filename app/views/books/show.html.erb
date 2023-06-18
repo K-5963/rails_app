@@ -24,7 +24,9 @@
 
   <p>レビュー一覧</p>
   <% if @book.reviews.present? %>
-    <p>⭐️<%= @book.average_rate %>⭐️</p>
+  
+    <p><%= @book.average_rate %> <%= @book.star %></p>
+    
     <% @book.reviews.each do |review| %>
       <p>投稿者：<%= review.user.name %></p>
       <p>評価：<%= review.rate %></p>
