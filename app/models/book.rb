@@ -13,13 +13,8 @@ class Book < ApplicationRecord
     reviews.average(:rate).round(1)
   end
   
-  def star
-    rate = reviews.average(:rate).round(1)
-    return "⭐️" if rate >= 1.0 && rate <= 1.4
-    return "⭐⭐️️" if rate >= 1.5 && rate <= 2.4
-    return "⭐️⭐⭐️" if rate >= 2.5 && rate <= 3.4
-    return "⭐️⭐⭐️⭐️" if rate >= 3.5 && rate <= 4.4
-    return "⭐️⭐⭐️⭐⭐️" if rate >= 4.5 && rate <= 5.0
+  def average_rate_with_stars
+    return "⭐️" * average_rate.round
   end
     
   validates :name, presence: true
