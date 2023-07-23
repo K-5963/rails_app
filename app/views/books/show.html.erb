@@ -1,8 +1,9 @@
 <div class="top">
+
   <p>本詳細ページ</p>
   <%= render @book %>
   <% if current_user == @book.user %>
-    <p><%= link_to "本情報を編集", edit_book_path %></p>
+    <p><%= link_to "本情報を編集", edit_book_path(@book) %></p>
     <p><%= link_to "削除", @book, method: :delete, data: { confirm: "削除していいですか？"} %></p>
   <% end %>
   
@@ -11,4 +12,34 @@
   <% else %>
     <p><%= link_to "いいね", book_favorite_path(@book), method: :post %></p>
   <% end %>
+  
+  <% unless @book.reviewed_by?(current_user) %>
+    <%= form_with url: book_review_path(@book), scope: :review, local: true do |f| %>
+      <%= f.label :review, "レビューする" %>
+      <%= f.select :rate, [["5", "5"], ["4", "4"], ["3", "3"], ["2", "2"], ["1", "1"]], include_blank: "選択して下さい" %>
+      <%= f.text_area :comment %>
+      <%= f.submit "レビューを投稿する", class: "btn btn-primary" %>
+    <% end %>
+  <% end %>
+
+  <p>レビュー一覧</p>
+  <% if @book.reviews.present? %>
+  
+    <p><%= @book.average_rate %> <%= @book.average_rate_with_stars %></p>
+    
+    <% @book.reviews.each do |review| %>
+      <p>投稿者：<%= review.user.name %></p>
+      <p>評価：<%= review.rate %></p>
+      <% if review.comment.present? %>
+        <p>コメント：<%= review.comment %></p>
+      <% end %>
+      <% if review.user == current_user %>
+        <%= link_to "レビューを削除", book_review_path(@book), data: { confirm: "レビューを削除しますか？"}, method: :delete %>
+        <br>
+      <% end %>
+    <% end %>
+  <% else %>
+    <p>まだレビューがありません</p>
+  <% end %>
+  
 </div>
