@@ -7,6 +7,19 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
   root 'static_pages#hello'
-  resources :users
-  resources :books
+  
+  
+  resources :users do
+    member do
+      get :favorites
+    end
+  end
+  
+  resources :books do
+    member do
+      post :favorites, to: 'favorites#create'
+      delete :favorites, to: 'favorites#destroy', as: 'destroy_favorite'
+    end
+  end
+  
 end
