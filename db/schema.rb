@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_05_15_130505) do
+ActiveRecord::Schema.define(version: 2023_05_27_110820) do
 
   create_table "books", force: :cascade do |t|
     t.string "name"
@@ -28,6 +28,11 @@ ActiveRecord::Schema.define(version: 2023_05_15_130505) do
     t.integer "book_id"
     t.index ["book_id"], name: "index_favorites_on_book_id"
     t.index ["user_id"], name: "index_favorites_on_user_id"
+  end
+
+  create_table "relationships", force: :cascade do |t|
+    t.integer "follower_id"
+    t.integer "followed_id"
   end
 
   create_table "users", force: :cascade do |t|

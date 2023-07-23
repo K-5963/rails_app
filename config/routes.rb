@@ -12,14 +12,15 @@ Rails.application.routes.draw do
   resources :users do
     member do
       get :favorites
+      get :following_users
+      get :followers
+      post :follow, to: 'relationships#create'
+      delete :unfollow, to: 'relationships#destroy'
     end
   end
   
   resources :books do
-    member do
-      post :favorites, to: 'favorites#create'
-      delete :favorites, to: 'favorites#destroy', as: 'destroy_favorite'
-    end
+    resource :favorite, :only => [:create, :destroy]
   end
   
 end
